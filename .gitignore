@@ -1,0 +1,5 @@
+.env
+__pycache__
+myenv
+report_card/db.sqlite3
+receipe
