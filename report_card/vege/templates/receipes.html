@@ -1,13 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 
-<table class="table">
+<div class="container mt-5">
+
+    <div class="mt-5">
+      <div class="mx-auto col-6">
+        <form>
+        <div class="mb-3">
+          <label for="receipe_name" class="form-label">Search Food</label>
+          <input name="search" class="form-control" required type="text">
+          <button type="submit" class="btn btn-primary mt-3">Search</button>
+        </div>
+        </form>
+      </div>
+    </div>
+
+<h2>Receipes List</h2>
+
+  <table class="table">
   <thead>
     <tr>
       <th scope="col">No.</th>
       <th scope="col">Name</th>
       <th scope="col">Description</th>
       <th scope="col">Image</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -16,10 +33,18 @@
       <th scope="row">{{forloop.counter}}</th>
       <td>{{receipe.receipe_name}}</td>
       <td>{{receipe.receipe_description}}</td>
-      <td>{{receipe.receipe_image}}</td>
+      <td>
+        <img src="/media/{{receipe.receipe_image}}" alt="receipe_img" style="height: 100px;">
+      </td>
+      <td>
+        <a href="/delete-receipe/{{receipe.id}}" class="btn btn-danger">Delete</a>
+        <a href="/update-receipe/{{receipe.id}}" class="btn btn-secondary">Update</a>
+      </td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+  <a href="/create-receipe" class="btn btn-primary">Add New Receipe</a>
+</div>
 
 {% endblock content %}
