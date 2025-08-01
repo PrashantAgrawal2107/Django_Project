@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container card p-3">
+  <form method="POST">
+    {% csrf_token %} 
+    <h2>Login</h2>
+    <hr>
+    {% if messages %}
+        {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+          <div class="alert alert-danger" role="alert">
+            {{message}}
+          </div>
+        {%else%}
+           <div class="alert alert-success" role="alert">
+            {{message}}
+          </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <p>Don't have account? <a href="/register">Register</a></p>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+</div>
+
+{% endblock content %}
